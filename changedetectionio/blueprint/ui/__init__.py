@@ -309,7 +309,7 @@ def construct_blueprint(datastore: ChangeDetectionStore, update_q, worker_handle
             r = requests.request(method="POST",
                                  data={'watch': watch_json},
                                  url="https://changedetection.io/share/share",
-                                 headers={'App-Guid': datastore.data['app_guid']})
+                                 headers={'App-Guid': datastore.data['app_guid']}, timeout=60)
             res = r.json()
 
             # Add to the flask session
